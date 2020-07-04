@@ -35,7 +35,18 @@
                         <tr>
                             <td>{{ $pertanyaan->judul }}</td>
                             <td>{{ $pertanyaan->isi }}</td>
-                            <td><a href="/jawaban/{{ $pertanyaan->id }}" class="btn btn-block btn-info">Jawaban</a></td>
+                            <td>
+                                <div class="btn-group">
+                                    <a class="btn btn-info" href="/jawaban/{{ $pertanyaan->id }}">Jawaban</a>
+                                    <a class="btn btn-primary" href="/pertanyaan/{{ $pertanyaan->id }}">Detail</a>
+                                    <a class="btn btn-warning" href="/pertanyaan/{{ $pertanyaan->id }}/edit">Edit</a>
+                                    <form action="/pertanyaan/{{ $pertanyaan->id }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-danger">Hapus</button>
+                                    </form>
+                                </div>
+                            </td>
                         <tr>
                     @endforeach
                 </tbody>
